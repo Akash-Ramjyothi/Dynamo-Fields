@@ -1,4 +1,4 @@
-<h1 align="center">Dynamo Fields</h1>
+<h1 align="center">Dynamo-Fields</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/54114888/232338380-886720e3-cf27-4dce-be89-192939dcc3a3.png" width="180" height="180">
