@@ -28,8 +28,10 @@ https://user-images.githubusercontent.com/54114888/232338406-fa05b4be-1c1b-4154-
 ## 🌎 Deployed Website:
 ### https://dynamo-fields.netlify.app/
 
-## 📝 Wireframe Used:
-### https://drive.google.com/file/d/19b63guOwh_LhYyPGz3BX9fNiqKBAYcIB/view?usp=sharing
+## 📝 Schema of Project:
+<p align="center">
+<img src="https://user-images.githubusercontent.com/54114888/232342560-273248f6-0f60-427e-a98a-97c471072285.png" width="700">
+</p>
 
 ## 🏗 Built With:
  - React.
