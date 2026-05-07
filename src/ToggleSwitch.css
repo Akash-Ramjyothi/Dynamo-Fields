@@ -1,40 +1,113 @@
+/* ==========================================
+   Toggle Switch Component
+   Modern, Accessible & Reusable
+========================================== */
+
 .toggle-switch {
+  --switch-width: 44px;
+  --switch-height: 22px;
+  --thumb-size: 18px;
+  --switch-bg: #b0b0b0;
+  --switch-active-bg: #7b1fa2;
+  --thumb-bg: #ffffff;
+  --focus-ring: rgba(123, 31, 162, 0.35);
+  --transition-speed: 0.25s;
+
   position: relative;
-  display: inline-block;
-  width: 42px;
-  height: 17px;
-  margin-left: 10px;
-  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  margin-inline: 10px;
 }
+
+/* Hide default checkbox */
 .toggle-switch input[type="checkbox"] {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
+
+/* Switch track */
 .toggle-switch .switch {
-  position: absolute;
+  position: relative;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  background-color: #a8a8a8;
-  border-radius: 25px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: background-color 0.2s ease;
+  border-radius: 999px;
+  background-color: var(--switch-bg);
+  transition:
+    background-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
 }
+
+/* Toggle thumb */
 .toggle-switch .switch::before {
-  position: absolute;
   content: "";
+  position: absolute;
+  top: 50%;
   left: 2px;
-  top: 2px;
-  width: 12px;
-  height: 12px;
-  background-color: #ffffff;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  background-color: var(--thumb-bg);
+  transform: translateY(-50%);
+  transition:
+    transform var(--transition-speed) ease,
+    background-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.15);
 }
-.toggle-switch input[type="checkbox"]:checked + .switch::before {
-  transform: translateX(25px);
-  background-color: #ffffff;
-}
+
+/* Checked state */
 .toggle-switch input[type="checkbox"]:checked + .switch {
-  background-color: purple;
+  background-color: var(--switch-active-bg);
+}
+
+.toggle-switch input[type="checkbox"]:checked + .switch::before {
+  transform: translate(
+      calc(var(--switch-width) - var(--thumb-size) - 4px),
+      -50%
+    );
+}
+
+/* Hover effect */
+.toggle-switch:hover .switch {
+  transform: scale(1.02);
+}
+
+/* Active click effect */
+.toggle-switch:active .switch::before {
+  width: calc(var(--thumb-size) + 2px);
+}
+
+/* Keyboard accessibility */
+.toggle-switch input[type="checkbox"]:focus-visible + .switch {
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+/* Disabled state */
+.toggle-switch input[type="checkbox"]:disabled + .switch {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .toggle-switch {
+    --switch-bg: #5c5c5c;
+    --thumb-bg: #f5f5f5;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .toggle-switch .switch,
+  .toggle-switch .switch::before {
+    transition: none;
+  }
 }
