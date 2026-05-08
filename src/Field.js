@@ -1,40 +1,86 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ToggleSwitch from "./ToggleSwitch";
 
-function Field(props) {
+function Field({
+  id,
+  label,
+  type,
+  required,
+  onFieldChange,
+  onRemoveField,
+}) {
+  // Handle all field updates
   const handleInputChange = (e) => {
-    props.onFieldChange(props.id, e.target.name, e.target.value);
+    const { name, value } = e.target;
+    onFieldChange(id, name, value);
+  };
+
+  // Handle toggle switch separately
+  const handleToggleChange = (checked) => {
+    onFieldChange(id, "required", checked);
   };
 
   return (
-    <div className="field">
-      <label>
-        {/* Label: */}
-        <input
-        className="text-box"
-          type="text"
-          name="label"
-          placeholder="----"
-          value={props.label}
-          onChange={handleInputChange}
+    <div className="field-container">
+      <div className="field-header">
+        <h4 className="field-title">Field Configuration</h4>
+
+        <RiDeleteBin6Line
+          className="delete-icon"
+          title="Delete Field"
+          onClick={() => onRemoveField(id)}
         />
-      </label>
-      <label>
-        {/* Type: */}
-        <select className="dropdown" name="type" value={props.type} onChange={handleInputChange}>
-          <option value="">-Select Type-</option>
-          <option value="string">STRING</option>
-          <option value="number">INTEGER</option>
-          <option value="boolean">BOOLEAN</option>
-          <option value="object">OBJECT</option>
-        </select>
-      </label>
-      {/* <button onClick={() => props.onRemoveField(props.id)}><RiDeleteBin6Line/></button> */}
-      <ToggleSwitch />
-      <RiDeleteBin6Line className="react-icons" onClick={() => props.onRemoveField(props.id)}/>
-      <hr class="solid"></hr>
+      </div>
+
+      <div className="field-body">
+        {/* Label Input */}
+        <div className="input-group">
+          <label className="input-label">Field Label</label>
+
+          <input
+            className="text-box"
+            type="text"
+            name="label"
+            placeholder="Enter field label"
+            value={label}
+            onChange={handleInputChange}
+            autoComplete="off"
+          />
+        </div>
+
+        {/* Type Dropdown */}
+        <div className="input-group">
+          <label className="input-label">Field Type</label>
+
+          <select
+            className="dropdown"
+            name="type"
+            value={type}
+            onChange={handleInputChange}
+          >
+            <option value="">Select Type</option>
+            <option value="string">STRING</option>
+            <option value="number">INTEGER</option>
+            <option value="boolean">BOOLEAN</option>
+            <option value="object">OBJECT</option>
+            <option value="array">ARRAY</option>
+          </select>
+        </div>
+
+        {/* Required Toggle */}
+        <div className="toggle-wrapper">
+          <span className="toggle-label">Required Field</span>
+
+          <ToggleSwitch
+            checked={required}
+            onChange={handleToggleChange}
+          />
+        </div>
+      </div>
+
+      <hr className="solid" />
     </div>
   );
 }
