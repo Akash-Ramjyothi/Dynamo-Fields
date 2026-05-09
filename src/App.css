@@ -1,95 +1,340 @@
+/* =========================================
+   Global Styles
+========================================= */
+
+:root {
+  --primary-color: #111827;
+  --secondary-color: #6b7280;
+  --border-color: #dcdcdc;
+  --background-light: #f9fafb;
+  --background-hover: #f3f4f6;
+  --white: #ffffff;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+
+  --transition-speed: 0.25s;
+  --box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   App Layout
+========================================= */
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: var(--background-light);
+  color: var(--primary-color);
+}
+
 .App {
   text-align: center;
 }
+
+/* =========================================
+   Parent Layout
+========================================= */
+
+.parent-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* =========================================
+   Main Container
+========================================= */
+
+.container {
+  width: 100%;
+  max-width: 720px;
+
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+
+  box-shadow: var(--box-shadow);
+
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.06),
+    0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.inner-box {
+  padding: 32px;
+}
+
+/* =========================================
+   Header Section
+========================================= */
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+
+.field-count {
+  background: #eef2ff;
+  color: #4338ca;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================
+   Add Field
+========================================= */
+
+.add-field-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+  margin-bottom: 24px;
+
+  border: 1px dashed var(--border-color);
+  border-radius: var(--border-radius-md);
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+
+.add-field-wrapper:hover {
+  background: var(--background-hover);
+  border-color: var(--primary-color);
+}
+
+.add-button {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.add-icon {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+/* =========================================
+   Field Cards
+========================================= */
+
+.fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-card {
+  padding: 18px;
+
+  border: 1px solid #ebebeb;
+  border-radius: var(--border-radius-md);
+
+  background: var(--white);
+
+  transition:
+    background-color var(--transition-speed),
+    border-color var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.field-card:hover {
+  background: var(--background-hover);
+  border-color: #cfcfcf;
+  transform: translateY(-1px);
+}
+
+.field-index {
+  margin-bottom: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--secondary-color);
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   Inputs
+========================================= */
+
+.text-box,
+.dropdown {
+  width: 100%;
+
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius-sm);
+
+  padding: 12px 14px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  background: var(--white);
+  color: var(--primary-color);
+
+  outline: none;
+
+  transition:
+    border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.text-box:focus,
+.dropdown:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* =========================================
+   Buttons
+========================================= */
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 28px;
+}
+
+.save-button {
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  background: var(--primary-color);
+  color: var(--white);
+
+  padding: 12px 22px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-speed),
+    opacity var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.save-button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.save-button:active {
+  transform: scale(0.98);
+}
+
+/* =========================================
+   Preview Section
+========================================= */
+
+.preview-wrapper {
+  margin-top: 32px;
+}
+
+.preview-title {
+  margin-bottom: 12px;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.preview-box {
+  overflow-x: auto;
+
+  background: #111827;
+  color: #f9fafb;
+
+  border-radius: var(--border-radius-md);
+
+  padding: 18px;
+
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Divider
+========================================= */
+
+.solid {
+  border-top: 1px solid #e5e7eb;
+  margin: 16px 0;
+}
+
+/* =========================================
+   React Logo
+========================================= */
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-.react-icons{
+.react-icons {
   padding-left: 10px;
 }
 
-.container{  
-  border: 2px solid rgba(190, 190, 190, 0.993);
-  border-radius: 5px;
-  display: flex;
-  width: fit-content;
-  justify-items: center;
-  flex-direction: column;
-}
-
-.parent-container{  
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-}
-
-.inner-box{
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-}
-
-.add-button{
-  font-weight: bold;
-  color: rgb(102, 102, 102);
-  width: max-content;
-  align-items: end;
-  align-content: end;
-}
-
-.text-box{
-  font-weight: bold;
-  font-size: 15px;
-  color: rgb(53, 53, 53);
-  border: 0;
-  width: fit-content;
-}
-
-.add-field-wrapper{
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-}
-
-.dropdown{
-  border: 0px;
-  border-radius: 3px;
-  background: rgb(226, 226, 226);
-  margin-left: 10px;
-  font-weight: bold;
-  font-size: 15px;
-  color: rgb(53, 53, 53);
-  padding: 2px;
-}
-
-.field:hover {
-  background-color: rgb(231, 231, 231);
-}
-
-.save-button{
-  margin-top: 20px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: 0px;
-  padding: 10px;
-  font-size: 15px;
-}
-
-.button-wrapper{
-  display: flex;
-  justify-content: center;
-}
-
-.solid {
-  border-top: 1.2px solid #d4d4d4;
-  margin-bottom: 14px;
-  margin-top: 14px;
-}
+/* =========================================
+   Accessibility & Motion
+========================================= */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -97,25 +342,64 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* =========================================
+   Responsive Design
+========================================= */
+
+@media screen and (max-width: 768px) {
+  .inner-box {
+    padding: 22px;
+  }
+
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .save-button {
+    width: 100%;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@media screen and (max-width: 480px) {
+  .parent-container {
+    padding: 20px 14px;
+  }
+
+  .inner-box {
+    padding: 18px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .add-button {
+    font-size: 14px;
+  }
+
+  .field-card {
+    padding: 14px;
+  }
 }
+
+/* =========================================
+   Animations
+========================================= */
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
